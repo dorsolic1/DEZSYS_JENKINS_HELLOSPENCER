@@ -1,3 +1,4 @@
+# Jenkins - GK8.3
 Dominik Orsolic
 
 ## Schritt 1: Docker Container
@@ -12,7 +13,9 @@ docker ps
 ```
 
 `localhost:8080` besuchen
-![[Pasted image 20260525122316.png]]
+<img width="1487" height="936" alt="grafik" src="https://github.com/user-attachments/assets/ed003d42-51ff-46fb-b2e3-81b72797da77" />
+
+
 Wenn dieses Fenster erscheint, hat das Starten erfolgreich funktioniert
 
 ## Schritt 2: Installation
@@ -21,7 +24,8 @@ Da ein Administrator Passwort verlangt wird, muss dieses bei der Ausgabe von `do
 Auf der Folgeseite auf `Install suggestet plugins klicken`. Danach auf `Skip and continue as Admin`.
 
 Nun ist das Dashboard sichtbar
-![[Pasted image 20260525123329.png]]
+<img width="1919" height="987" alt="grafik" src="https://github.com/user-attachments/assets/051a4fe2-98a4-42f8-9a49-76c1fb15954f" />
+
 
 
 ## Schritt 3: Hello World Code
@@ -110,15 +114,18 @@ pipeline {
 Auf dem Jenkins-Dashboard auf `Element anlegen` klicken, Name eingeben und Typ `Pipeline auswählen`. Anschließend auf `OK` klicken. 
 
 Auf der Konfigurationsseite nach unten zum Bereich `Pipeline` scrollen. Beim Dropdown-Menü `Definition` von `Pipeline script` auf `Pipeline script from SCM` ändern. Anschließend bei `SCM` den Eintrag `Git` auswählen. Jetzt den Link vom geforkten Repository einfügen und `Branch specifier` von `*/master` zu `*/main` ändern 
-![[Pasted image 20260525125204.png]]
+<img width="1919" height="916" alt="grafik" src="https://github.com/user-attachments/assets/4b6c9ddd-88fc-4203-90de-9d2386fd36f9" />
+
 Auf `Save` klicken
 
 ## Schritt 5: Testen
 Im Menü auf `Build Now` klicken und warten. Unter `Stages` ist nun zu sehen, dass jede Stage erfolgreich durchgelaufen ist:
-![[Pasted image 20260525125701.png]]
+<img width="582" height="163" alt="grafik" src="https://github.com/user-attachments/assets/0c8ee141-3c23-40d9-abe9-2e64f51099bb" />
+
 
 Unter `Console Output` kann man auch die Ausgabe sehen:
-![[Pasted image 20260525125901.png]]
+<img width="950" height="758" alt="grafik" src="https://github.com/user-attachments/assets/5c97c316-e0a3-4e69-b394-ad08bcfa71ba" />
+
 
 Hier sind folgende Zeilen sichbar:
 `HelloWorld - Code wird erfolgreich aus Git geladen...` -> Beweist die Source-Phase

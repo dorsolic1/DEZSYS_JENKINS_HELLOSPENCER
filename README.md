@@ -120,6 +120,7 @@ Auf `Save` klicken
 
 ## Schritt 5: Testen
 Im Menü auf `Build Now` klicken und warten. Unter `Stages` ist nun zu sehen, dass jede Stage erfolgreich durchgelaufen ist:
+
 <img width="582" height="163" alt="grafik" src="https://github.com/user-attachments/assets/0c8ee141-3c23-40d9-abe9-2e64f51099bb" />
 
 

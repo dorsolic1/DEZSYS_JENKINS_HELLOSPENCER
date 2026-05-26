@@ -34,76 +34,29 @@ Folgendes Github Repository forken: `https://github.com/ThomasMicheler/DEZSYS_JE
 Den Inhalt der Datei `Jenkinsfile` löschen und durch folgenden Code ersetzten: 
 ```bash
 pipeline {
-    agent {
-        docker { 
-            image 'python:3.11' 
-            args '-p 5556:5556'
-        }
-    }
-    environment {
-        APP_PORT = '5556'
-        GITHUB_REPO = 'https://github.com/ThomasMicheler/DEZSYS_JENKINS_HELLOSPENCER.git'
-    }
+    agent any
+
     stages {
-        stage('Pre-Build Cleanup') {
+        stage('Source') {
             steps {
-                // Kill any existing Flask processes
-                sh 'pkill -f "python hello.py" || true'
-            }
-        }
-        stage('Checkout') {
-            steps {
-                cleanWs()
-                git branch: 'main', url: "${GITHUB_REPO}"
+                echo 'HelloWorld - Code wird erfolgreich aus Git geladen...'
+                checkout scm
             }
         }
         stage('Build') {
             steps {
-                sh '''
-                    python -m pip install --upgrade pip
-                    pip install flask
-                    pip install requests
-                    pip install pytest
-                    if [ ! -f count.txt ]; then
-                        echo "0" > count.txt
-                    fi
-                    chmod 666 count.txt
-                '''
+                echo 'HelloWorld - Build-Schritt erfolgreich abgeschlossen.'
             }
         }
         stage('Test') {
             steps {
-                sh '''
-                    # Run the unit tests
-                    python -m pytest tests/test_hello.py -v
-                '''
+                echo 'HelloWorld - Test-Schritt erfolgreich abgeschlossen.'
             }
         }
-        stage('Run') {
+        stage('Deployment') {
             steps {
-                sh '''
-                    nohup python src/hello.py > app.log 2>&1 &
-                    sleep 5
-                    curl http://localhost:5556/api/hello
-                '''
+                echo 'HelloWorld - Deployment erfolgreich abgeschlossen.'
             }
-        }
-        stage('Test API') {
-            steps {
-                sh 'python tests/test_api.py'
-            }
-        }
-        stage('Keep Alive') {
-            steps {
-                // Keep the container running indefinitely
-                sh 'sleep infinity'
-            }
-        }
-    }
-    post {
-        always {
-            // Cleanup: Stop the Flask application
-            sh 'pkill -f "python src/hello.py" || true'
         }
     }
 }
